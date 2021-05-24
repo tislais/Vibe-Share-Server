@@ -19,10 +19,11 @@ async function run() {
     
       CREATE TABLE playlists (
         id SERIAL PRIMARY KEY NOT NULL,
-                    videoId VARCHAR(512) NOT NULL,
-                    title VARCHAR(512) NOT NULL,
-                    thumbnails VARCHAR(512) NOT NULL,
-                    owner_id INTEGER NOT NULL REFERENCES users(id)
+        playlist_id VARCHAR(512) NOT NULL,
+        title VARCHAR(512) NOT NULL,
+        theme VARCHAR(512) NOT NULL,
+        note TEXT NOT NULL,
+        owner_id INTEGER NOT NULL REFERENCES users(id)
       );
     `);
 
