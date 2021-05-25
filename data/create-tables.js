@@ -23,7 +23,14 @@ async function run() {
         title VARCHAR(512) NOT NULL,
         theme VARCHAR(512) NOT NULL,
         note TEXT NOT NULL,
+        recipient TEXT,
         user_id INTEGER NOT NULL REFERENCES users(id)
+      );
+
+      CREATE TABLE favorites (
+        id SERIAL PRIMARY KEY NOT NULL,
+        favorites_playlist_id INTEGER NOT NULL REFERENCES playlists(id),
+        favorites_user_id INTEGER NOT NULL REFERENCES users(id)
       );
     `);
 
