@@ -3,6 +3,7 @@ import client from '../lib/client.js';
 // import our seed data:
 import users from './users.js';
 import playlists from './playlists.js';
+import favorites from './favorites.js';
 
 run();
 
@@ -22,14 +23,29 @@ async function run() {
     );
     
     const user = data[0].rows[0];
+    
 
-    await Promise.all(
+    const playlistData = await Promise.all(
       playlists.map(playlist => {
         return client.query(`
-        INSERT INTO playlists (playlist_id, title, theme, note, user_id)
-        VALUES ($1, $2, $3, $4, $5)
+        INSERT INTO playlists (playlist_id, title, theme, note, recipient, user_id)
+        VALUES ($1, $2, $3, $4, $5, $6)
+        RETURNING *;
         `,
-        [playlist.playlist_id, playlist.title, playlist.theme, playlist.note, user.id]);
+        [playlist.playlist_id, playlist.title, playlist.theme, playlist.note, playlist.recipient, user.id]);
+      })
+    );
+
+    const favoritesData = playlistData[0].rows;
+
+    
+    await Promise.all(
+      favoritesData.map((playlist) => {
+        return client.query(`
+        INSERT INTO favorites (favorites_playlist_id, favorites_user_id)
+        VALUES ($1, $2)
+        `,
+        [playlist.id, user.id]);
       })
     );
     

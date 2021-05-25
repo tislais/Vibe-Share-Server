@@ -9,7 +9,8 @@ async function run() {
 
     await client.query(`
       DROP TABLE IF EXISTS users CASCADE;
-      DROP TABLE IF EXISTS playlists;
+      DROP TABLE IF EXISTS playlists CASCADE;
+      DROP TABLE IF EXISTS favorites;
     `);
 
     console.log('drop tables complete');
