@@ -23,7 +23,7 @@ async function run() {
         title VARCHAR(512) NOT NULL,
         theme VARCHAR(512) NOT NULL,
         note TEXT NOT NULL,
-        owner_id INTEGER NOT NULL REFERENCES users(id)
+        user_id INTEGER NOT NULL REFERENCES users(id)
       );
     `);
 
