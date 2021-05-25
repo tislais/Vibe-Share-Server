@@ -26,10 +26,10 @@ async function run() {
     await Promise.all(
       playlists.map(playlist => {
         return client.query(`
-        INSERT INTO playlists (playlistId, title, theme, note, user_id)
+        INSERT INTO playlists (playlist_id, title, theme, note, user_id)
         VALUES ($1, $2, $3, $4, $5)
         `,
-        [playlist.name, playlist.title, playlist.theme, playlist.note, user.id]);
+        [playlist.playlist_id, playlist.title, playlist.theme, playlist.note, user.id]);
       })
     );
     
