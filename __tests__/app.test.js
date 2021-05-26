@@ -115,7 +115,6 @@ describe('API Routes', () => {
 
     });
 
-
     // delete playlist from favorites table
 
     it('DELETE favorite to /api/favorites/:id', async () => {
@@ -128,6 +127,13 @@ describe('API Routes', () => {
       expect(response.status).toBe(200);
       expect(response.body).toEqual(favorite);
       
+    });
+
+    it('GET mixtape from /api/mixtape/:userId', async () => {
+      const response = await request.get(`/api/mixtape/${user.id}`)
+        .set('Authorization', user.token);
+      expect(response.status).toBe(200);
+      expect(response.body).toEqual([{ id: mixtape.id, userId: user.id, ...mixtape }]);
     });
 
   });
