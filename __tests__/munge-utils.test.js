@@ -161,7 +161,7 @@ describe('API Playlist Title Munging', () => {
     }
   ];
 
-  it('It should munge the playlists endpoint and return a playlist title', async () => {
+  it.skip('It should munge the playlists endpoint and return a playlist title', async () => {
     // arrange
     // expected is in variable above
     // movieData is imported from file
@@ -173,7 +173,7 @@ describe('API Playlist Title Munging', () => {
     expect(output).toEqual(expectedPlaylistTitle);
   });
 
-  it('It should munge the playlistItems endpoint and return item title and id, channel title and id, and standard thumbnail', async () => {
+  it.skip('It should munge the playlistItems endpoint and return item title and id, channel title and id, and standard thumbnail', async () => {
     // arrange
     // expected is in variable above
     // movieData is imported from file
