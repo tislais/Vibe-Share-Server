@@ -11,7 +11,7 @@ describe('API Routes', () => {
     return client.end();
   });
 
-  describe('/api/cats', () => {
+  describe('/api/playlists', () => {
     let user;
 
     beforeAll(async () => {
@@ -20,9 +20,9 @@ describe('API Routes', () => {
       const response = await request
         .post('/api/auth/signup')
         .send({
-          name: 'Me the User',
-          email: 'me@user.com',
-          password: 'password'
+          name: 'Moi le User',
+          email: 'moi@user.com',
+          password: 'passmot'
         });
 
       expect(response.status).toBe(200);
@@ -30,17 +30,34 @@ describe('API Routes', () => {
       user = response.body;
     });
 
+    let mixtape = {
+      'id': expect.anything(),
+      'playlist_id': '9876',
+      'title': 'Bangin Test Vibes',
+      'theme': 'test wave',
+      'note': 'Once upon a test time',
+      'recipient': 'haxx0r',
+      'userId': 1
+    };
+
     // append the token to your requests:
     //  .set('Authorization', user.token);
     
-    it('VERB to /api/route [with context]', async () => {
+    it('POST mixtape to /api/mixtape', async () => {
       
-      // remove this line, here to not have lint error:
-      user.token;
+      const response = await request
+        .post('/api/mixtape')
+        .set('Authorization', user.token)
+        .send(mixtape);
+
+      expect(response.status).toBe(200);
+      expect(response.body).toEqual({ 
+        userId: user.id,
+        ...mixtape
+      });
     
-      // expect(response.status).toBe(200);
-      // expect(response.body).toEqual(?);
-      
+      // Update local client favorite object
+      mixtape = response.body;
     });
 
   });
