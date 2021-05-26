@@ -31,7 +31,8 @@ describe('API Routes', () => {
     });
 
     let mixtape = {
-      'id': expect.anything(),
+      // id expect anything??
+      'id': 1,
       'playlist_id': '9876',
       'title': 'Bangin Test Vibes',
       'theme': 'test wave',
@@ -60,10 +61,11 @@ describe('API Routes', () => {
       mixtape = response.body;
     });
 
-    it.skip('GET mixtape from /api/mixtape/:id', async () => {
-      const response = await request.get(`/api/mixtape/${mixtape.id}`);
+    it('GET mixtape from /api/mixtape/:id', async () => {
+      const response = await request.get(`/api/mixtape/${mixtape.id}`)
+        .set('Authorization', user.token);
       expect(response.status).toBe(200);
-      expect(response.body).toEqual({ ...mixtape, userId: user.id });
+      expect(response.body).toEqual([{ id: mixtape.id, userId: user.id, ...mixtape }]);
     });
 
   });
