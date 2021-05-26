@@ -93,10 +93,42 @@ describe('API Routes', () => {
     });
 
     // get all of user's favorites
+    it('GET my /api/mixtape/:id/favorites only returns my favorites', async () => {
+      // this is setup so that there is a favorite belong to someone else in the db
+      const otherResponse = await request
+        .post('/api/favorites')
+        .set('Authorization', user.token)
+        .send({
+          favorites_playlist_id: 1,
+          favorites_user_id: user.id
+        });
+
+      expect(otherResponse.status).toBe(200);
+      const otherFavorite = otherResponse.body;
+
+      // we are testing this
+      const response = await request.get(`/api/mixtape/${user.id}/favorites`)
+        .set('Authorization', user.token);
+
+      expect(response.status).toBe(200);
+      expect(response.body).toEqual({ ...otherFavorite, id: 1 });
+
+    });
+
 
     // delete playlist from favorites table
 
-    // delete playlist from playlist table
+    it('DELETE favorite to /api/favorites/:id', async () => {
+      
+      const response = await request
+        .delete(`/api/favorites/${favorite.id}`)
+        .set('Authorization', user.token)
+        .send(favorite);
+
+      expect(response.status).toBe(200);
+      expect(response.body).toEqual(favorite);
+      
+    });
 
   });
 });
