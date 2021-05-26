@@ -60,7 +60,7 @@ describe('API Routes', () => {
       mixtape = response.body;
     });
 
-    it('GET mixtape from /api/mixtape/:id', async () => {
+    it.skip('GET mixtape from /api/mixtape/:id', async () => {
       const response = await request.get(`/api/mixtape/${mixtape.id}`);
       expect(response.status).toBe(200);
       expect(response.body).toEqual({ ...mixtape, userId: user.id });
