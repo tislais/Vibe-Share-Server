@@ -3,7 +3,7 @@ import client from '../lib/client.js';
 // import our seed data:
 import users from './users.js';
 import playlists from './playlists.js';
-import favorites from './favorites.js';
+// import favorites from './favorites.js';
 
 run();
 
