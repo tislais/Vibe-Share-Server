@@ -41,6 +41,12 @@ describe('API Routes', () => {
       'userId': 1
     };
 
+    let favorite = {
+      'id': 1,
+      'favorites_playlist_id': 1,
+      'favorites_user_id': 1
+    };
+
     // append the token to your requests:
     //  .set('Authorization', user.token);
     
@@ -67,6 +73,30 @@ describe('API Routes', () => {
       expect(response.status).toBe(200);
       expect(response.body).toEqual([{ id: mixtape.id, userId: user.id, ...mixtape }]);
     });
+
+    // add a playlist to favorites
+    it('POST favorite to /api/favorites', async () => {
+      
+      const response = await request
+        .post('/api/favorites')
+        .set('Authorization', user.token)
+        .send(favorite);
+
+      expect(response.status).toBe(200);
+      expect(response.body).toEqual({ 
+        favorites_user_id: user.id,
+        ...favorite
+      });
+      
+      // Update local client favorite object
+      favorite = response.body;
+    });
+
+    // get all of user's favorites
+
+    // delete playlist from favorites table
+
+    // delete playlist from playlist table
 
   });
 });

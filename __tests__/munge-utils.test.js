@@ -173,7 +173,7 @@ describe('API Playlist Title Munging', () => {
     expect(output).toEqual(expectedPlaylistTitle);
   });
 
-  it.only('It should munge the playlistItems endpoint and return item title and id, channel title and id, and standard thumbnail', async () => {
+  it('It should munge the playlistItems endpoint and return item title and id, channel title and id, and standard thumbnail', async () => {
     // arrange
     // expected is in variable above
     // movieData is imported from file
