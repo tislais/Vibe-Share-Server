@@ -136,5 +136,12 @@ describe('API Routes', () => {
       expect(response.body).toEqual([{ id: mixtape.id, userId: user.id, ...mixtape }]);
     });
 
+    it('GET all mixtapes in database', async () => {
+      const response = await request.get('/api/mixtape/all')
+        .set('Authorization', user.token);
+      expect(response.status).toBe(200);
+      expect(response.body).toEqual([{  ...mixtape }]);
+    });
+
   });
 });
