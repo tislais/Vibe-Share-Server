@@ -137,7 +137,7 @@ describe('API Routes', () => {
     });
 
     it('GET all mixtapes in database', async () => {
-      const response = await request.get('/api/mixtape/all')
+      const response = await request.get('/api/mixtapes/all')
         .set('Authorization', user.token);
       expect(response.status).toBe(200);
       expect(response.body).toEqual([{  ...mixtape }]);
