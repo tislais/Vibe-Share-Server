@@ -39,7 +39,48 @@ const playlists = [
     note: 'Thought you\'d enjoy some jazz',
     recipient: 'Ornette',
     user_id: 5
+  },
+  {
+    playlist_id: 'PLplXQ2cg9B_okySP1Z7MTETWHRKCj1fJ-',
+    title: 'lover',
+    theme: 'Jupiter',
+    note: 'well hello there',
+    recipient: 'Romeo',
+    user_id: 6
+  },
+  {
+    playlist_id: 'PLYdHbbk6_PQs4HV5GmrbQpo2oyUirTGe4',
+    title: 'Summer vibez',
+    theme: 'Omega',
+    note: 'nice to meet ya',
+    recipient: 'cash warren',
+    user_id: 7
+  },
+  {
+    playlist_id: 'PLq3UZa7STrbo1Yt9rLk3OIejJVa82NBoI',
+    title: 'Billy',
+    theme: 'Pleiades',
+    note: 'dreaming away',
+    recipient: 'jake',
+    user_id: 8
+  },
+  {
+    playlist_id: 'PLJrIlWmREnJZHGyd4paZO0ba5bC4MqQ4G',
+    title: 'Artic Monkeys',
+    theme: 'Zeta-Reticuli',
+    note: 'nostalgia',
+    recipient: 'ricky',
+    user_id: 9
+  },
+  {
+    playlist_id: 'PL4zQ6RXLMCJxnhtHM0niYeMYaE1U715Vd',
+    title: 'Maroon 5',
+    theme: 'Vulpecula',
+    note: 'marry me',
+    recipient: 'craig',
+    user_id: 10
   }
+
 ];
 
 export default playlists;
